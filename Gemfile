@@ -46,3 +46,4 @@ end
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'devise'
+gem 'font-awesome-rails'
