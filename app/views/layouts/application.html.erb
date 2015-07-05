@@ -13,7 +13,6 @@
 </head>
 <body>
     <div id="wrapper">
-
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -27,6 +26,7 @@
             </div>
             <!-- /.navbar-header -->
 
+            <% if user_signed_in? %>
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -220,23 +220,25 @@
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i> <%= current_user.username %> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        <li><%= link_to ' User Profile', edit_user_registration_path, class: "fa fa-user fa-fw" %>
                         </li>
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li> <%= link_to ' Logout', destroy_user_session_path, method:
+       :delete, class: "fa fa-sign-out fa-fw" %> 
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>
                 <!-- /.dropdown -->
             </ul>
+            <% end %>
             <!-- /.navbar-top-links -->
-
+            <% if user_signed_in? %>
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
@@ -252,7 +254,7 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-home fa-fw"></i> In&iacute;cio</a>
+                            <%= link_to raw('<i class="fa fa-home fa-fw"></i> Início'), root_path, :class => '' %>
                         </li>
                         <li>
                             <a href="index.html"><i class="fa fa-file-text-o fa-fw"></i> Eventos</a>
@@ -291,6 +293,7 @@
                 </div>
                 <!-- /.sidebar-collapse -->
             </div>
+            <% end %>
             <!-- /.navbar-static-side -->
         </nav>
         <!-- Page Content -->
